@@ -12,7 +12,9 @@ table = soup.find("table", attrs = {"class" : "table_develop3"})
 # print(table)
 
 table1 = table.find_all("tr")
-print(table1)
+# print(table1)
+for i in table1 :
+    
 
 # data1 = []
 # for i in table1 :
