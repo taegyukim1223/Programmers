@@ -1,0 +1,11 @@
+imputer
+fillna는 1개 칼럼만 채워주지만 simpleimpute는 2개 이상
+
+label encoding
+NAN 값포함시 오류가 난다.
+
+Normalize
+from sklearn.preprocessing import MinMaxScaler
+
+Standard Scaling
+from sklearn.preprocessing import StandardScaler
