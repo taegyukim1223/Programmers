@@ -42,4 +42,6 @@ label = [
 
 train[feature].head()
 
+inpute 함수가 뭘까요?
+
 
