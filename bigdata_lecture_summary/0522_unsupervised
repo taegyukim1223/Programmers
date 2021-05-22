@@ -1,0 +1,101 @@
+## 차원축소 ( Dimensionality Reduction)
+
+[차원축소심화](https://www.notion.so/76d8dcafecd145b4a1cc9771bd6c872a)
+
+차원축소?
+
+Feature를 줄여주는 것.
+
+데이터의 차원을 축소하는 방법?
+
+Feature Selection
+
+FiItering
+
+Wrapper
+
+Embedded
+
+Feature Extration
+
+PCA
+
+LDA
+
+SVD
+
+차원축소 하는 이유?
+
+ 원핫인코딩의 경우 컬럼이 겁나 많아질 수 있다.
+
+ 컬럼이 많으면 성능이 잘 안나온다.
+
+다중공선성(Multicollinearity) 문제란?
+
+변인(Feature)이 너무 유사하여 부정적인 영향이 발생
+
+회귀분석의 전제가정인 독립변수간의 상관관계가 높으면 안된다(?)는 조건을 위배
+
+### PCA(왼), LDA(오)
+
+PCA는 분산을 최대로 하는 축으로 차원축소
+
+LDA는 클래스 분리를 최대화하는 축으로 차원축소
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/743abc63-1d91-4e18-b1a2-2890870c3ac8/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/743abc63-1d91-4e18-b1a2-2890870c3ac8/Untitled.png)
+
+클래스 간 분산(between-class scatter)과 클래스 내부 분산(within-class scatter)의 비율을 최대화하는 방식 - LDA
+
+### SVD 차원축소 - 특이값 분해 Singular Value Decomposition
+
+행렬개념알아야 이해가능
+
+---
+
+# Clustering
+
+클러스터링 실생활 예 : 추천엔진, 검색엔진, 시장세분화
+
+### K-mean Clustering
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/763e58e1-226b-43ea-93f9-46965e5c98ea/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/763e58e1-226b-43ea-93f9-46965e5c98ea/Untitled.png)
+
+### DBSCAN 밀도기반클러스터링 (Density-Based Spatial Clustering of Applications with Noise)
+
+각 샘플들간의 거리(밀도)로 군집화한다.
+
+몇개로 군집할지 안정해준다.
+
+core point, border point, noise point, EPsilon, minPts - 주요용어
+
+코어포인트가 다른 군집에 속하면 그 군집은 같은 군집으로 묶인다.
+
+하지만 코어포인트는 되지 못하지만 어떤 코어포인트에 속하는 점을 Border point 라고 한다.
+
+어느 군집에도 속하지 못하는 점을 Noise point 라고한다. 
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/74b9bcf7-69b9-41f1-b869-1224eb5edbd8/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/74b9bcf7-69b9-41f1-b869-1224eb5edbd8/Untitled.png)
+
+### 실루엣 스코어 (Cluster Evaluation)
+
+비지도학습의 특성상 정확하게 성능을 평가하기란 어렵다.
+
+하지만 대표적인 방법으로 실루엣 스코어를 사용한다.
+
+실수엣 계수를 기반으로 판단한다.
+
+개별데이터가 가지는 실루엣계수는 그 데이터가 같은 군집내에 얼마나 가까운지, 다른 군집과는 얼마나 분리 되어 있는지를 나타낸다.
+
+전체실루엣 계수는 개별 데이터의 실루엣 계수의 평균이다.
+
+실루엣 계수 계산법 :
+
+해당 데이터와 같은 군집에 있는 다른 데이터와 거리를 평균한 값 A
+
+해당 데이터와 다른 군집(가장가까운)에 있는 다른 데이터와 거리를 평균한 값 B
+
+두 군집 간의 거리는 B-A로 정의 되나, 정규화 하기 위해 max(A, B) 로 나눠준다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/27e65869-4bde-4f97-9e45-e83712071421/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/27e65869-4bde-4f97-9e45-e83712071421/Untitled.png)
+
+전체 실루엣 계수는 0~1 사이로 표현 음수이면 아예 클러스터링이 잘되지 않은 것.
